@@ -38,7 +38,7 @@
           <h2 class="subtitle">Your Score:</h2>
           <h3 class="is-size-1" :class="{
             'has-text-primary': user.score <= app.highestScore,
-            'has-text-danger': user.score > app.highestScore
+            'has-text-danger': user.score > app.highestScore || didUserBeatTheRecord
           }" v-cloak>{{ user.score }}</h3>
           <h2 class="subtitle">Highest Score Ever:</h2>
           <h3 class="is-size-1 has-text-primary" v-cloak v-show="!loading">{{ app.highestScore }}</h3>

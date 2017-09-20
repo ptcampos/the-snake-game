@@ -38,7 +38,8 @@ new Vue({
       highestScore: 0
     },
     configurationsKey: '',
-    loading: false
+    loading: false,
+    didUserBeatTheRecord: false
   },
   mounted () {
     // generalInformationRef
@@ -60,11 +61,12 @@ new Vue({
     user: {
       handler: function (newValue) {
         if (newValue.score > this.app.highestScore) {
-          this.app.highestScore = newValue.score
+          this.didUserBeatTheRecord = true;
+          this.app.highestScore = newValue.score;
           const data = {};
           data[this.configurationsKey] = this.app;
           generalInformationRef.update(data)
-            .catch(error => console.error(error))
+            .catch(error => console.error(error));
         }
       },
       deep: true
@@ -113,6 +115,7 @@ new Vue({
       this.pause();
       this.startWalking();
       this.user.score = 0;
+      this.didUserBeatTheRecord = false;
     },
     game () {
       const addDirectionXToPosition = addDirectionToPosition(this.snake.directionX);
