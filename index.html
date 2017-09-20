@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ES6 Snake Game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css">
+
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+      canvas {
+        border: 1px solid #200202;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+  <section class="section" id="app">
+    <div class="container">
+      <h1 class="title has-text-centered">
+        The Snake Game
+      </h1>
+      <div class="columns">
+        <div class="column has-text-right">
+          <canvas id="canvas" width="400" height="400"></canvas>
+          <div class="columns">
+            <div class="column" v-cloak>
+              <button class="button is-primary" @click.prevent="start" v-show="!isRunning">START</button>
+              <button class="button is-danger" @click.prevent="pause" v-show="isRunning">PAUSE</button>
+              <button class="button is-warning" @click.prevent="restart" v-show="isRunning">RESTART</button>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <h2 class="subtitle">Your Score:</h2>
+          <h3 class="is-size-1" :class="{
+            'has-text-primary': user.score <= app.highestScore,
+            'has-text-danger': user.score > app.highestScore
+          }" v-cloak>{{ user.score }}</h3>
+          <h2 class="subtitle">Highest Score Ever:</h2>
+          <h3 class="is-size-1 has-text-primary" v-cloak v-show="!loading">{{ app.highestScore }}</h3>
+          <i class="fa fa-spin fa-spinner fa-2x" v-show="loading"></i>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column has-text-centered">
+            Made with <i class="fa fa-heart" style="color: fuchsia;"></i> by <a target="_blank" href="https://github.com/ptcampos">Paulo Campos.</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+  <script src="https://unpkg.com/vue"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDaTu32zsp8b0SOEVoCeWTMrHYFBf5zhsY",
+      authDomain: "the-snake-game.firebaseapp.com",
+      databaseURL: "https://the-snake-game.firebaseio.com",
+      projectId: "the-snake-game",
+      storageBucket: "the-snake-game.appspot.com",
+      messagingSenderId: "416243176977"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <script src="./app/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "es6-snake-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bulma": "^0.5.3",
+    "http-server": "^0.10.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "http-server -c-1 -p 8081",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ptcampos/es6-snake-game.git"
+  },
+  "author": "Paulo Campos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ptcampos/es6-snake-game/issues"
+  },
+  "homepage": "https://github.com/ptcampos/es6-snake-game#readme"
+}
