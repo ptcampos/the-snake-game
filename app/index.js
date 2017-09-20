@@ -156,6 +156,7 @@ new Vue({
           // }
           this.snake.size = 5;
           this.user.score = 0;
+          this.didUserBeatTheRecord = false;
         }
       });
 
